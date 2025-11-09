@@ -1,4 +1,12 @@
-📂 Project Structure
+# 🚀 DevOps Project
+
+This repository contains the **DevOps project** setup and implementation using modern web technologies. The project demonstrates automation, CI/CD, and deployment practices with a scalable architecture.
+
+---
+
+## 📂 Project Structure
+
+```plaintext
 its-anuskapalit/
 │
 ├── public/               # Static assets
@@ -45,37 +53,39 @@ CI/CD ready setup for easy deployment
 1️⃣ Clone the repository
 git clone https://github.com/its-anuskapalit/its-anuskapalit.git
 cd its-anuskapalit
-
 2️⃣ Install dependencies
+bash
+Copy code
 bun install
 # or
 npm install
-
 3️⃣ Create a .env file
-
 Add your environment variables inside .env:
 
+bash
+Copy code
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_ANON_KEY=your_anon_key
-
 4️⃣ Run the development server
+bash
+Copy code
 bun dev
 # or
 npm run dev
-
 5️⃣ Build for production
+bash
+Copy code
 bun run build
 # or
 npm run build
-
 🧰 Scripts
 Command	Description
 bun dev	Run the development server
 bun run build	Build for production
 bun run lint	Run linter checks
 bun start	Start production build
-🚢 Deployment
 
+🚢 Deployment
 This project can be deployed using:
 
 Vercel
@@ -90,15 +100,22 @@ Docker
 
 Example with Vercel:
 
+bash
+Copy code
 vercel deploy
-
 🧑‍💻 Author
-
 👩‍💻 Anuska Palit
 📧 Connect on GitHub
-
 💼 DevOps | AI | Full Stack Developer
 
 📜 License
-
 This project is licensed under the MIT License — feel free to use and modify it.
+
+
+
+
+
+
+
+cd its-anuskapalit
+
