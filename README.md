@@ -1,46 +1,104 @@
-****Welcome to Moodify****
-**Use your preferred IDE**
+📂 Project Structure
+its-anuskapalit/
+│
+├── public/               # Static assets
+├── src/                  # Main source code
+├── supabase/             # Backend or database setup
+├── .env                  # Environment variables
+├── .gitignore            # Git ignored files
+├── README.md             # Project documentation
+├── package.json          # Dependencies and scripts
+├── vite.config.ts        # Vite configuration
+├── tailwind.config.ts    # Tailwind CSS configuration
+├── eslint.config.js      # Linting configuration
+└── tsconfig.*.json       # TypeScript configurations
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+⚙️ Tech Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Frontend: Vite + TypeScript + React
 
-Follow these steps:
+Styling: Tailwind CSS
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Backend / Database: Supabase
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Package Manager: Bun / npm
 
-# Step 3: Install the necessary dependencies.
-npm i
+Linting & Formatting: ESLint
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+DevOps Tools (optional): Docker, GitHub Actions, CI/CD pipelines
+
+🧠 Features
+
+Modular code structure with reusable components
+
+Supabase integration for authentication and data management
+
+Tailwind for rapid and responsive UI design
+
+Optimized builds using Vite
+
+Environment-based configuration using .env
+
+CI/CD ready setup for easy deployment
+
+🪄 Getting Started
+1️⃣ Clone the repository
+git clone https://github.com/its-anuskapalit/its-anuskapalit.git
+cd its-anuskapalit
+
+2️⃣ Install dependencies
+bun install
+# or
+npm install
+
+3️⃣ Create a .env file
+
+Add your environment variables inside .env:
+
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_anon_key
+
+4️⃣ Run the development server
+bun dev
+# or
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+5️⃣ Build for production
+bun run build
+# or
+npm run build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+🧰 Scripts
+Command	Description
+bun dev	Run the development server
+bun run build	Build for production
+bun run lint	Run linter checks
+bun start	Start production build
+🚢 Deployment
 
-**Use GitHub Codespaces**
+This project can be deployed using:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Vercel
 
-## What technologies are used for this project?
+Netlify
 
-This project is built with:
+Render
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Supabase Hosting
+
+Docker
+
+Example with Vercel:
+
+vercel deploy
+
+🧑‍💻 Author
+
+👩‍💻 Anuska Palit
+📧 Connect on GitHub
+
+💼 DevOps | AI | Full Stack Developer
+
+📜 License
+
+This project is licensed under the MIT License — feel free to use and modify it.
