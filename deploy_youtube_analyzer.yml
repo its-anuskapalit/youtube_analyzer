@@ -1,0 +1,86 @@
+---
+- name: Deploy YouTube Analyzer App
+  hosts: youtube_server
+  become: yes
+  vars:
+    project_dir: /home/ubuntu/youtube_analyzer
+    repo_url: "https://github.com/its-anuskapalit/youtube_analyzer.git"
+    node_version: "18.x"
+deploy_youtube_analyzer.yml
+  tasks:
+    - name: Update apt cache and upgrade
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: Install system dependencies
+      apt:
+        name:
+          - curl
+          - git
+          - build-essential
+        state: present
+
+    - name: Add Node.js repository
+      shell: curl -fsSL https://deb.nodesource.com/setup_{{ node_version }} | bash -
+      args:
+        executable: /bin/bash
+
+    - name: Install Node.js and npm
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Install Bun package manager
+      shell: curl -fsSL https://bun.sh/install | bash
+      args:
+        executable: /bin/bash
+      environment:
+        HOME: /home/ubuntu
+      become_user: ubuntu
+
+    - name: Ensure PM2 is installed globally
+      npm:
+        name: pm2
+        global: yes
+
+    - name: Clone the YouTube Analyzer repository
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ project_dir }}"
+        version: main
+        force: yes
+
+    - name: Create environment file
+      copy:
+        dest: "{{ project_dir }}/.env"
+        content: |
+          VITE_SUPABASE_URL=https://your-supabase-url.supabase.co
+          VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+
+    - name: Install dependencies using npm
+      npm:
+        path: "{{ project_dir }}"
+        production: false
+
+    - name: Build the YouTube Analyzer app
+      shell: npm run build
+      args:
+        chdir: "{{ project_dir }}"
+
+    - name: Start app with PM2
+      shell: |
+        pm2 start npm --name "youtube_analyzer" -- run preview
+        pm2 save
+      args:
+        chdir: "{{ project_dir }}"
+
+    - name: Configure PM2 to start on system boot
+      shell: pm2 startup systemd -u ubuntu --hp /home/ubuntu
+
+    - name: Show running PM2 processes
+      shell: pm2 list
+      register: pm2_processes
+
+    - debug:
+        var: pm2_processes.stdout_lines
